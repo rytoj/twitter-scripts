@@ -46,9 +46,19 @@ class StdOutListener(StreamListener):
         print(status)
 
 
-if __name__ == '__main__':
-    l = StdOutListener(debug=False)
+def monitor_tw_stream(twitter_user_id, debug=False):
+    """
+    Monitors user tweeter feed in real-time
+    :param twitter_user_id: twitter user id
+    find twitter id by username here: http://gettwitterid.com
+    :param debug: if set True, more information is displayed
+    """
+    listener = StdOutListener(debug)
     auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-    stream = Stream(auth, l)
-    stream.filter(follow=["254853566"])
+    stream = Stream(auth, listener)
+    stream.filter(follow=[twitter_user_id])
+
+
+if __name__ == '__main__':
+    monitor_tw_stream(twitter_user_id="2916305152")
