@@ -34,12 +34,13 @@ class StdOutListener(StreamListener):
                 print(decoded_json.get('text'))
                 print(decoded_json.get('filter_level'))
                 print("-----------")
+            return True
         else:
             if user_id in FOLLOW_IDS:
                 print("User: {}".format(user))
                 print(decoded_json.get('text'))
                 print("-----------")
-        return True
+            return True
 
     def on_error(self, status):
         print(status)
