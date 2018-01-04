@@ -112,4 +112,4 @@ venv.bak/
 test_files/
 
 #Project
-.config.json
+config.json
