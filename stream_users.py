@@ -57,8 +57,7 @@ def monitor_tw_stream(twitter_user_id, debug=False):
     auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
     stream = Stream(auth, listener)
-    stream.filter(follow=[twitter_user_id])
-
+    stream.filter(follow=[twitter_user_id], stall_warnings=True)
 
 if __name__ == '__main__':
     monitor_tw_stream(twitter_user_id="2916305152")
